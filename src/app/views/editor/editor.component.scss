@@ -1,0 +1,81 @@
+@import '../../../theme.scss';
+.view {
+  background: nb-theme(color-basic-1000);
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-areas: 'header header header' 'sidebar code preview';
+  grid-template-rows: min-content 1fr;
+  grid-template-columns: min-content auto min-content;
+
+  mwlResizable {
+    box-sizing: border-box; // required for the enableGhostResize option to work
+  }
+
+  .header {
+    height: 50px;
+    grid-area: header;
+    width: 100%;
+    background-color: nb-theme(color-basic-800);
+    display: flex;
+    align-items: center;
+    h1 {
+      color: nb-theme(color-basic-100);
+      padding: 10px;
+    }
+  }
+
+  .sidebar {
+    grid-area: sidebar;
+    background-color: nb-theme(color-basic-700);
+    min-width: 200px;
+    .templates {
+    }
+    .components {
+    }
+    .files {
+    }
+  }
+
+  .code {
+    grid-area: code;
+    .templates {
+    }
+  }
+
+  .preview {
+    grid-area: preview;
+    border-left: 2px solid nb-theme(color-basic-800);
+    resize: horizontal;
+    overflow: auto;
+    overflow-y: hidden;
+    direction: rtl;
+    position: relative;
+    max-width: 80vw;
+    width: 100%;
+    min-width: 100px;
+    .preview-toolbar {
+      height: 50px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      background-color: nb-theme(color-basic-900);
+      // border-top: 1px solid nb-theme(color-basic-1000);
+      nb-icon {
+        height: 40px;
+        width: 40px;
+        color: nb-theme(color-basic-500);
+        cursor: pointer;
+        padding: 10px;
+        &:hover {
+          color: nb-theme(color-basic-100);
+        }
+      }
+    }
+    iframe {
+      border: 0;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
