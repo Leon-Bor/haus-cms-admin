@@ -1,4 +1,7 @@
 @import '../../../theme.scss';
+nb-layout-column {
+  padding: 0 !important;
+}
 .view {
   background: nb-theme(color-basic-1000);
   height: 100vh;
@@ -7,10 +10,6 @@
   grid-template-areas: 'header header header' 'sidebar code preview';
   grid-template-rows: min-content 1fr;
   grid-template-columns: min-content auto min-content;
-
-  mwlResizable {
-    box-sizing: border-box; // required for the enableGhostResize option to work
-  }
 
   .header {
     height: 50px;
@@ -59,8 +58,13 @@
       width: 100%;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       background-color: nb-theme(color-basic-900);
       // border-top: 1px solid nb-theme(color-basic-1000);
+      p {
+        padding-left: 15px;
+        font-weight: 600;
+      }
       nb-icon {
         height: 40px;
         width: 40px;

@@ -1,21 +1,28 @@
-<div class="view">
-  <div class="header">
-    <h1>⌂</h1>
-  </div>
+<nb-layout>
+  <nb-layout-column>
+    <div class="view">
+      <div class="header">
+        <h1>⌂</h1>
+      </div>
 
-  <div class="sidebar">
-    <div class="templates">tempaltes</div>
-    <div class="components">components</div>
-    <div class="files">files</div>
-  </div>
-  <div class="code">code</div>
-  <div class="preview" [ngStyle]="previewStyles">
-    <div class="preview-toolbar">
-      <nb-icon (click)="onResizeIframe('min')" icon="minimize-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
-      <nb-icon (click)="onResizeIframe('max')" icon="maximize-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
-      <nb-icon (click)="onResizeIframe('phone')" icon="smartphone-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
-      <nb-icon (click)="onResizeIframe('desktop')" icon="monitor-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+      <div class="sidebar">
+        <div class="templates">tempaltes</div>
+        <div class="components">components</div>
+        <div class="files">files</div>
+      </div>
+      <div class="code">code</div>
+      <div class="preview" [ngStyle]="previewStyles">
+        <div class="preview-toolbar">
+          <div class="icons">
+            <nb-icon (click)="onResizeIframe('min')" icon="minimize-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+            <nb-icon (click)="onResizeIframe('max')" icon="maximize-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+            <nb-icon (click)="onResizeIframe('phone')" icon="smartphone-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+            <nb-icon (click)="onResizeIframe('desktop')" icon="monitor-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+          </div>
+          <p class="paragraph">{{previewStyles.width}}</p>
+        </div>
+        <iframe id="preview" [src]="previewUrl | safe:'resourceUrl'"></iframe>
+      </div>
     </div>
-    <iframe id="preview" [src]="previewUrl | safe:'resourceUrl'"></iframe>
-  </div>
-</div>
+  </nb-layout-column>
+</nb-layout>
