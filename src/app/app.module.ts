@@ -1,10 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AceEditorModule } from 'ng2-ace-editor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbSpinnerModule, NbIconModule } from '@nebular/theme';
+import {
+  NbThemeModule,
+  NbLayoutModule,
+  NbSpinnerModule,
+  NbIconModule,
+  NbDialogModule,
+  NbCardModule,
+  NbButtonModule,
+  NbInputModule,
+} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { IndexComponent } from './views/index.component';
 import { EditorComponent } from './views/editor/editor.component';
@@ -19,7 +29,8 @@ import { ComponentsListComponent } from './components/components-list/components
 import { FilesListComponent } from './components/files-list/files-list.component';
 import { ResizableModule } from 'angular-resizable-element';
 import { SafePipe } from './pipes/safe-pipe';
-
+import { LogoComponent } from './components/logo/logo.component';
+import { UploadZipComponent } from './components/dialogs/upload-zip/upload-zip.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +46,8 @@ import { SafePipe } from './pipes/safe-pipe';
     ComponentsListComponent,
     FilesListComponent,
     SafePipe,
+    LogoComponent,
+    UploadZipComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +60,11 @@ import { SafePipe } from './pipes/safe-pipe';
     NbSpinnerModule,
     NbEvaIconsModule,
     NbIconModule,
+    NbDialogModule.forRoot({}),
+    NbCardModule,
+    NbButtonModule,
+    NbInputModule,
+    AceEditorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

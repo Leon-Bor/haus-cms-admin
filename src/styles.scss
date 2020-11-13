@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+.nb-theme-dark {
+  nb-layout-header {
+    nav {
+      height: 60px !important;
+      display: flex;
+      justify-content: space-between !important;
+      padding: 0 20px !important;
+    }
+  }
+
+  nb-icon {
+    height: 40px;
+    width: 40px;
+    color: nb-theme(color-basic-500);
+    cursor: pointer;
+    padding: 10px;
+    &:hover {
+      color: nb-theme(color-basic-100);
+    }
+  }
+
+  nb-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+  }
+}

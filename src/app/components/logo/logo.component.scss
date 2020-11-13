@@ -1,0 +1,44 @@
+.logo {
+  display: flex;
+  margin-left: 20px;
+  cursor: pointer;
+  align-items: center;
+  &:hover {
+    h1 {
+      display: none;
+    }
+    nb-icon {
+      display: flex;
+    }
+  }
+  h1 {
+    margin: 0;
+    width: 21px;
+  }
+  nb-icon {
+    display: none;
+    width: 21px;
+    height: 25px;
+    padding: 0;
+    color: white;
+    transform: scale(1.3);
+  }
+  .names {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 10px;
+    .cms {
+      margin: 0;
+      margin-top: 4px;
+    }
+    .title {
+      opacity: 0.5;
+      margin: 0;
+      font-size: 12px;
+      text-transform: capitalize;
+      margin-top: -5px;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+nb-card {
+  max-width: 400px;
+  nb-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+    input {
+      cursor: pointer;
+    }
+  }
+}
