@@ -14,6 +14,7 @@ import {
   NbCardModule,
   NbButtonModule,
   NbInputModule,
+  NbMenuModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { IndexComponent } from './views/index.component';
@@ -30,7 +31,10 @@ import { FilesListComponent } from './components/files-list/files-list.component
 import { ResizableModule } from 'angular-resizable-element';
 import { SafePipe } from './pipes/safe-pipe';
 import { LogoComponent } from './components/logo/logo.component';
-import { UploadZipComponent } from './components/dialogs/upload-zip/upload-zip.component'; 
+import { UploadZipComponent } from './components/dialogs/upload-zip/upload-zip.component';
+import { MenuTemplatesComponent } from './components/menu-templates/menu-templates.component';
+import { MenuComponentsComponent } from './components/menu-components/menu-components.component';
+import { MenuFilesComponent } from './components/menu-files/menu-files.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +52,9 @@ import { UploadZipComponent } from './components/dialogs/upload-zip/upload-zip.c
     SafePipe,
     LogoComponent,
     UploadZipComponent,
+    MenuTemplatesComponent,
+    MenuComponentsComponent,
+    MenuFilesComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +72,7 @@ import { UploadZipComponent } from './components/dialogs/upload-zip/upload-zip.c
     NbButtonModule,
     NbInputModule,
     AceEditorModule,
+    NbMenuModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

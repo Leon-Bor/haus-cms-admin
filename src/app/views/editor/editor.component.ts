@@ -16,7 +16,7 @@ declare var ace: any;
 export class EditorComponent implements OnInit, AfterViewInit {
   previewUrl = 'https://sterni-bingo.de';
   previewStyles = { width: '420px' };
-  breakpoints = [320, 375, 420, 480, 568, 667, 768, 992, 1024, 1280, 1366, 1440, 1680, 1920];
+  breakpoints = [320, 375, 420, 480, 568, 667, 768, 992, 1280, 1366, 1440, 1680, 1920];
   @ViewChild('editor') editor;
   constructor(private dialogService: NbDialogService) {}
 

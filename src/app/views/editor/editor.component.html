@@ -8,9 +8,36 @@
   <nb-layout-column>
     <div class="view">
       <div class="sidebar">
-        <div class="templates">tempaltes</div>
-        <div class="components">components</div>
-        <div class="files">files</div>
+        <div class="templates">
+          <div class="menu-toolbar">
+            <p>Templates</p>
+            <div class="menu-toolbar-actions">
+              <nb-icon icon="plus-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+              <nb-icon icon="plus-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+            </div>
+          </div>
+          <app-menu-templates></app-menu-templates>
+        </div>
+        <div class="components">
+          <div class="menu-toolbar">
+            <p>Components</p>
+            <div class="menu-toolbar-actions">
+              <nb-icon icon="plus-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+              <nb-icon icon="plus-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+            </div>
+          </div>
+          <app-menu-components></app-menu-components>
+        </div>
+        <div class="files">
+          <div class="menu-toolbar">
+            <p>Files</p>
+            <div class="menu-toolbar-actions">
+              <nb-icon icon="plus-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+              <nb-icon icon="plus-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+            </div>
+          </div>
+          <app-menu-files></app-menu-files>
+        </div>
       </div>
       <div class="code">
         <div id="editor"></div>
