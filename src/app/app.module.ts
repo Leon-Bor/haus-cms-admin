@@ -35,6 +35,8 @@ import { UploadZipComponent } from './components/dialogs/upload-zip/upload-zip.c
 import { MenuTemplatesComponent } from './components/menu-templates/menu-templates.component';
 import { MenuComponentsComponent } from './components/menu-components/menu-components.component';
 import { MenuFilesComponent } from './components/menu-files/menu-files.component';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +62,7 @@ import { MenuFilesComponent } from './components/menu-files/menu-files.component
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     NbThemeModule.forRoot({ name: 'dark' }),
     NbLayoutModule,
     NbEvaIconsModule,

@@ -4,10 +4,19 @@
     <p>
       Please select a .zip file which contains your html template. Your html template should contain a <b>index.html</b> as entry point.
     </p>
-    <input type="text" type="file" accept=".zip" nbInput fullWidth fieldSize="medium" placeholder="Medium" />
+    <input
+      (change)="onFileSelected($event)"
+      type="text"
+      type="file"
+      accept=".zip"
+      nbInput
+      fullWidth
+      fieldSize="medium"
+      placeholder="Medium"
+    />
   </nb-card-body>
   <nb-card-footer>
     <button nbButton outline status="primary" (click)="ref.close()">Cancel</button>
-    <button nbButton status="primary" (click)="ref.close()">Upload</button>
+    <button nbButton status="primary" (click)="onUpload()">Upload</button>
   </nb-card-footer>
 </nb-card>
