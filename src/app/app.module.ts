@@ -15,6 +15,9 @@ import {
   NbButtonModule,
   NbInputModule,
   NbMenuModule,
+  NbToastrModule,
+  NbGlobalPositionStrategy,
+  NbGlobalPhysicalPosition,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { IndexComponent } from './views/index.component';
@@ -25,9 +28,6 @@ import { SimpleHeaderComponent } from './components/simple-header/simple-header.
 import { EditorHeaderComponent } from './components/editor-header/editor-header.component';
 import { AceCodeEditorComponent } from './components/ace-code-editor/ace-code-editor.component';
 import { WebsitePreviewComponent } from './components/website-preview/website-preview.component';
-import { TemplateListComponent } from './components/template-list/template-list.component';
-import { ComponentsListComponent } from './components/components-list/components-list.component';
-import { FilesListComponent } from './components/files-list/files-list.component';
 import { ResizableModule } from 'angular-resizable-element';
 import { SafePipe } from './pipes/safe-pipe';
 import { LogoComponent } from './components/logo/logo.component';
@@ -35,7 +35,14 @@ import { UploadZipComponent } from './components/dialogs/upload-zip/upload-zip.c
 import { MenuTemplatesComponent } from './components/menu-templates/menu-templates.component';
 import { MenuComponentsComponent } from './components/menu-components/menu-components.component';
 import { MenuFilesComponent } from './components/menu-files/menu-files.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FilesService } from './services/files.service';
+import { ComponentsService } from './services/components.service';
+import { TemplatesService } from './services/templates.service';
+import { CmsInterceptor } from './interceptors/cms.interceptor';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { LoginComponent } from './views/login/login.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -48,15 +55,13 @@ import { HttpClientModule } from '@angular/common/http';
     EditorHeaderComponent,
     AceCodeEditorComponent,
     WebsitePreviewComponent,
-    TemplateListComponent,
-    ComponentsListComponent,
-    FilesListComponent,
     SafePipe,
     LogoComponent,
     UploadZipComponent,
     MenuTemplatesComponent,
     MenuComponentsComponent,
     MenuFilesComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,8 +81,24 @@ import { HttpClientModule } from '@angular/common/http';
     NbInputModule,
     AceEditorModule,
     NbMenuModule.forRoot(),
+    NbToastrModule.forRoot({ duration: 10000, position: NbGlobalPhysicalPosition.BOTTOM_RIGHT, destroyByClick: true }),
   ],
-  providers: [],
+  providers: [
+    FilesService,
+    ComponentsService,
+    AuthGuardService,
+    TemplatesService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CmsInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,0 +1,29 @@
+@import '../../../theme.scss';
+
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-direction: column;
+  h1 {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+    max-width: 500px;
+    text-align: center;
+    font-size: 14px;
+    color: nb-theme(color-basic-500);
+    span {
+      align-items: center;
+      background-color: black;
+      padding: 0 3px;
+      color: white;
+    }
+  }
+
+  input {
+    min-width: 380px;
+  }
+}

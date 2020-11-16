@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuItem } from '@nebular/theme';
+import { TemplatesService } from '../../services/templates.service';
 
 @Component({
   selector: 'app-menu-templates',
@@ -52,7 +53,10 @@ export class MenuTemplatesComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private templateService: TemplatesService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('ng inint template');
+    this.templateService.getTemplates();
+  }
 }

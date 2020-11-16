@@ -1,0 +1,22 @@
+<nb-layout>
+  <nb-layout-header fixed>
+    <app-logo name="Login"></app-logo>
+  </nb-layout-header>
+
+  <nb-layout-column>
+    <div class="login">
+      <h1>Login</h1>
+      <p>
+        Enter your personal CMS editKey. You can find the editKey in your <span>.env</span> file. The editKey is automatically generated
+        when the CMS was setted up.
+      </p>
+
+      <input (change)="onInputChange($event)" fieldSize="giant" type="text" nbInput placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" />
+      <button (click)="onLogin()" nbButton status="primary">Submit</button>
+    </div>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    <!-- Insert footer here -->
+  </nb-layout-footer>
+</nb-layout>

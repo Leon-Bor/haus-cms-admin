@@ -3,6 +3,7 @@ import { NbDialogRef, NbDialogService } from '@nebular/theme';
 import { Ace } from 'ace-builds';
 import { ResizeEvent } from 'angular-resizable-element';
 import { AceConfigInterface } from 'ngx-ace-wrapper';
+import { environment } from '../../../environments/environment';
 import { UploadZipComponent } from '../../components/dialogs/upload-zip/upload-zip.component';
 // import 'brace/theme/nord_dark';
 // import 'brace/mode/javascript';
@@ -14,7 +15,7 @@ declare var ace: any;
   styleUrls: ['./editor.component.scss'],
 })
 export class EditorComponent implements OnInit, AfterViewInit {
-  previewUrl = 'https://sterni-bingo.de';
+  previewUrl = environment.backendUrl;
   previewStyles = { width: '420px' };
   breakpoints = [320, 375, 420, 480, 568, 667, 768, 992, 1280, 1366, 1440, 1680, 1920];
   @ViewChild('editor') editor;
