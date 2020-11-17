@@ -1,0 +1,14 @@
+<div class="file">
+  <div class="icon" *ngIf="icon">
+    <nb-icon [icon]="icon" pack="file"></nb-icon>
+  </div>
+  <div class="about">
+    <p class="name">{{label}}</p>
+    <p *ngIf="description" class="path">{{description}}</p>
+  </div>
+  <div class="actions">
+    <div *ngFor="let a of actions">
+      <nb-icon (click)="onAction($event,a.name)" [icon]="a.icon"></nb-icon>
+    </div>
+  </div>
+</div>

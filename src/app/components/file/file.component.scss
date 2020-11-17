@@ -1,0 +1,52 @@
+@import '../../../theme.scss';
+
+.file {
+  display: grid;
+  align-items: center;
+  grid-template-columns: min-content 1fr min-content;
+  border-bottom: solid 1px nb-theme(color-basic-800);
+  &:hover {
+    background-color: #171f33;
+    cursor: pointer;
+  }
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    nb-icon {
+      fill: nb-theme(color-basic-100);
+    }
+  }
+  .actions {
+    nb-icon {
+      fill: nb-theme(color-basic-100);
+      width: 40px;
+      height: 40px;
+      opacity: 0.2;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  .about {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    .name {
+      margin: 0;
+    }
+    .path {
+      margin: 0;
+      font-size: 12px;
+      color: nb-theme(color-basic-100);
+      margin-top: -5px;
+      opacity: 0.3;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}

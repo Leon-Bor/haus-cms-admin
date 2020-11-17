@@ -10,7 +10,7 @@ export class IconsService {
   init(): void {
     // ICONS ARE LOCADED IN ASSET FOLDER
     this.iconsLibrary.registerSvgPack('file', {
-      javascript: `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      js: `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;" xml:space="preserve">
    <g>
      <path d="M6.5,41v15c0,1.009,1.22,2,2.463,2h40.074c1.243,0,2.463-0.991,2.463-2V41H6.5z M27.021,51.566

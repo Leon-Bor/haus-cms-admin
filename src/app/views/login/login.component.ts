@@ -19,11 +19,7 @@ export class LoginComponent implements OnInit {
   onLogin(): void {
     if (this.input) {
       localStorage.setItem('haus-editKey', this.input);
-      this.authService.login().then((isAuth) => {
-        if (isAuth) {
-          this.router.navigate(['']);
-        }
-      });
+      this.authService.login().then((isAuth) => {});
     }
   }
 }

@@ -1,0 +1,12 @@
+<nb-card>
+  <nb-card-header>Delete {{name}}</nb-card-header>
+  <nb-card-body>
+    <p>
+      Are you sure you want to delete this?
+    </p>
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton outline status="primary" (click)="ref.close()">Cancel</button>
+    <button nbButton status="danger" (click)="onDelete()">Yes, delete!</button>
+  </nb-card-footer>
+</nb-card>

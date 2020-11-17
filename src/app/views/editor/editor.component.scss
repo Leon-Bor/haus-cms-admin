@@ -49,6 +49,12 @@ nb-layout-column {
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        nb-icon {
+          opacity: 0.3;
+          &:hover {
+            opacity: 1;
+          }
+        }
       }
     }
 

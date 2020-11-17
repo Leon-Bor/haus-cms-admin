@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NbMenuItem } from '@nebular/theme';
+import { NbDialogService, NbMenuItem } from '@nebular/theme';
 import { TemplatesService } from '../../services/templates.service';
+import { DeleteDialogComponent } from '../dialogs/delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-menu-templates',
@@ -8,55 +9,37 @@ import { TemplatesService } from '../../services/templates.service';
   styleUrls: ['./menu-templates.component.scss'],
 })
 export class MenuTemplatesComponent implements OnInit {
-  items: NbMenuItem[] = [
-    {
-      title: 'Messages',
-      badge: {
-        text: '99+',
-        status: 'danger',
-      },
-    },
-    {
-      title: 'Notifications',
-      badge: {
-        dotMode: true,
-        status: 'warning',
-      },
-    },
-    {
-      title: 'Emails',
-      badge: {
-        text: 'new',
-        status: 'success',
-      },
-    },
-    {
-      title: 'Messages',
-      badge: {
-        text: '99+',
-        status: 'danger',
-      },
-    },
-    {
-      title: 'Notifications',
-      badge: {
-        dotMode: true,
-        status: 'warning',
-      },
-    },
-    {
-      title: 'Emails',
-      badge: {
-        text: 'new',
-        status: 'success',
-      },
-    },
-  ];
+  items: { id: string }[] = [];
 
-  constructor(private templateService: TemplatesService) {}
+  constructor(private templateService: TemplatesService, private dialogService: NbDialogService) {}
 
   ngOnInit(): void {
-    console.log('ng inint template');
     this.templateService.getTemplates();
+    this.templateService.templates.subscribe((items) => {
+      this.items = items;
+    });
+  }
+
+  onItem(): void {
+    console.log('onTemplate click');
+  }
+
+  onAction(e): void {
+    switch (e) {
+      case 'delete':
+        this.dialogService.open(DeleteDialogComponent, {
+          context: {
+            name: 'template',
+            callback: () => {
+              console.log('delete now');
+            },
+          },
+        });
+
+        break;
+
+      default:
+        break;
+    }
   }
 }

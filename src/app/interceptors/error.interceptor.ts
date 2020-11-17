@@ -13,7 +13,11 @@ export class ErrorInterceptor implements HttpInterceptor {
         if (error.error instanceof ErrorEvent) {
           this.toastrService.show(`${error?.error?.message}`, 'Client Error', { status: 'danger' });
         } else {
-          this.toastrService.show(`${error?.error?.message}`, 'Server Error', { status: 'danger' });
+          try {
+            this.toastrService?.show(`${error?.error?.message}`, 'Server Error', { status: 'danger' });
+          } catch (error) {
+            console.log('Could not send toast: ' + error?.error?.message);
+          }
         }
         return throwError(error?.error?.message);
       })

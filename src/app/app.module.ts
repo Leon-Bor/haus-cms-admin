@@ -43,6 +43,8 @@ import { CmsInterceptor } from './interceptors/cms.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { LoginComponent } from './views/login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { FileComponent } from './components/file/file.component';
+import { DeleteDialogComponent } from './components/dialogs/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { AuthGuardService } from './services/auth-guard.service';
     MenuComponentsComponent,
     MenuFilesComponent,
     LoginComponent,
+    FileComponent,
+    DeleteDialogComponent,
   ],
   imports: [
     BrowserModule,

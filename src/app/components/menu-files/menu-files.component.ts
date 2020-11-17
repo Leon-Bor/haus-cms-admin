@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuItem } from '@nebular/theme';
+import { FilesService } from '../../services/files.service';
 
 @Component({
   selector: 'app-menu-files',
@@ -7,51 +8,19 @@ import { NbMenuItem } from '@nebular/theme';
   styleUrls: ['./menu-files.component.scss'],
 })
 export class MenuFilesComponent implements OnInit {
-  items: NbMenuItem[] = [
-    {
-      title: 'Messages',
-      badge: {
-        text: '99+',
-        status: 'danger',
-      },
-    },
-    {
-      title: 'Notifications',
-      badge: {
-        dotMode: true,
-        status: 'warning',
-      },
-    },
-    {
-      title: 'Emails',
-      badge: {
-        text: 'new',
-        status: 'success',
-      },
-    },
-    {
-      title: 'Messages',
-      badge: {
-        text: '99+',
-        status: 'danger',
-      },
-    },
-    {
-      title: 'Notifications',
-      badge: {
-        dotMode: true,
-        status: 'warning',
-      },
-    },
-    {
-      title: 'Emails',
-      badge: {
-        text: 'new',
-        status: 'success',
-      },
-    },
-  ];
-  constructor() {}
+  items: { id: string; path: string }[] = [];
 
-  ngOnInit(): void {}
+  constructor(private filesService: FilesService) {}
+
+  ngOnInit(): void {
+    this.filesService.getFiles();
+    this.filesService.files.subscribe((items) => {
+      console.log(items);
+      this.items = items;
+    });
+  }
+
+  getIcon(f): string {
+    return f.id.split('.')[1];
+  }
 }
