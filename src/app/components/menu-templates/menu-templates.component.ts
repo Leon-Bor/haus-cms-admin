@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService, NbMenuItem } from '@nebular/theme';
+import { CodeEditorService } from '../../services/code-editor.service';
 import { TemplatesService } from '../../services/templates.service';
 import { DeleteDialogComponent } from '../dialogs/delete-dialog/delete-dialog.component';
 
@@ -11,17 +12,27 @@ import { DeleteDialogComponent } from '../dialogs/delete-dialog/delete-dialog.co
 export class MenuTemplatesComponent implements OnInit {
   items: { id: string }[] = [];
 
-  constructor(private templateService: TemplatesService, private dialogService: NbDialogService) {}
+  constructor(
+    private templateService: TemplatesService,
+    private dialogService: NbDialogService,
+    private codeEditorService: CodeEditorService
+  ) {}
 
   ngOnInit(): void {
     this.templateService.getTemplates();
     this.templateService.templates.subscribe((items) => {
       this.items = items;
+      if (!this.codeEditorService.currentFile.value) {
+        const indexFile = items.find((f) => f?.id?.includes('index.html'));
+        if (indexFile) {
+          this.codeEditorService.setCurrentFile(indexFile);
+        }
+      }
     });
   }
 
-  onItem(): void {
-    console.log('onTemplate click');
+  onItem(f): void {
+    this.codeEditorService.setCurrentFile(f);
   }
 
   onAction(e): void {

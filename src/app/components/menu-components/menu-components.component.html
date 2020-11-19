@@ -1,5 +1,5 @@
 <div class="list">
   <div *ngFor="let f of items">
-    <app-file [label]="f.id" icon="html"></app-file>
+    <app-file (click)="onItem(f)" [label]="f.id" icon="html"></app-file>
   </div>
 </div>

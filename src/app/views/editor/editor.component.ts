@@ -5,6 +5,7 @@ import { ResizeEvent } from 'angular-resizable-element';
 import { AceConfigInterface } from 'ngx-ace-wrapper';
 import { environment } from '../../../environments/environment';
 import { UploadZipComponent } from '../../components/dialogs/upload-zip/upload-zip.component';
+import { CodeEditorService } from '../../services/code-editor.service';
 // import 'brace/theme/nord_dark';
 // import 'brace/mode/javascript';
 declare var ace: any;
@@ -19,7 +20,7 @@ export class EditorComponent implements OnInit, AfterViewInit {
   previewStyles = { width: '420px' };
   breakpoints = [320, 375, 420, 480, 568, 667, 768, 992, 1280, 1366, 1440, 1680, 1920];
   @ViewChild('editor') editor;
-  constructor(private dialogService: NbDialogService) {}
+  constructor(private dialogService: NbDialogService, private codeEditorService: CodeEditorService) {}
 
   ngOnInit(): void {}
 
@@ -32,15 +33,44 @@ export class EditorComponent implements OnInit, AfterViewInit {
       // width: '100%',
     });
 
-    // this.editor.mode = 'javascript';
-    this.editor.setValue(`function testThis() {
-      console.log("it's working!")
-  }`);
-
-    // this.editor.setTheme('nord_dark');
-    this.editor.setTheme('ace/theme/dracula');
-    this.editor.session.setMode('ace/mode/javascript');
+    this.editor.setTheme('ace/theme/nord_dark');
+    // this.editor.setTheme('ace/theme/dracula');
     this.editor.setShowPrintMargin(false);
+
+    this.codeEditorService.currentFile.subscribe((file) => {
+      const type = file?.id?.split('.')[1];
+      if (file) {
+        switch (type) {
+          case 'js':
+            this.editor.setSession(new ace.createEditSession(file?.value, 'ace/mode/javascript'));
+            break;
+          case 'html':
+            this.editor.setSession(new ace.createEditSession(file?.value, 'ace/mode/html'));
+            break;
+          case 'css':
+            this.editor.setSession(new ace.createEditSession(file?.value, 'ace/mode/css'));
+            break;
+          default:
+            this.editor.setSession(new ace.createEditSession(file?.value, 'ace/mode/plain_text'));
+            break;
+        }
+        if (file.type === 'component') {
+          this.editor.getSession().setUseWorker(false);
+        }
+        this.editor.getSession().on('change', (e) => {
+          this.codeEditorService.addCurrentFileToDraft(this.editor.getValue(), this.editor.getSession().getUndoManager());
+        });
+      }
+    });
+
+    this.editor.on('changeSession', (e) => {
+      const currentFile = this.codeEditorService.currentFile.value;
+      const draftName = currentFile?.type + '#' + currentFile?.id;
+      const draft = this.codeEditorService.drafts[draftName];
+      if (draft) {
+        this.editor.getSession().setUndoManager(draft.undoManager);
+      }
+    });
   }
 
   onResizeIframe(action): void {
