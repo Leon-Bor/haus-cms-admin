@@ -6,8 +6,11 @@
   grid-template-columns: min-content 1fr min-content;
   border-bottom: solid 1px nb-theme(color-basic-800);
   &:hover {
-    background-color: #171f33;
+    background-color: nb-theme(color-basic-800);
     cursor: pointer;
+    .actions {
+      display: flex;
+    }
   }
   .icon {
     display: flex;
@@ -20,6 +23,7 @@
     }
   }
   .actions {
+    display: none;
     nb-icon {
       fill: nb-theme(color-basic-100);
       width: 40px;

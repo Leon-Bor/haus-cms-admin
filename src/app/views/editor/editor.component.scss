@@ -35,7 +35,7 @@ nb-layout-column {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: nb-theme(color-basic-800);
+      background-color: #192038;
       position: absolute;
       top: 0;
       left: 0;
@@ -44,6 +44,8 @@ nb-layout-column {
       p {
         margin: 0;
         padding-left: 15px;
+        text-transform: uppercase;
+        font-size: 12px;
       }
       .menu-toolbar-actions {
         display: flex;
