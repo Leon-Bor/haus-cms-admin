@@ -5,7 +5,6 @@
       Please select a .zip file which contains your html template. Your html template should contain a <b>index.html</b> as entry point.
     </p>
     <input
-      (change)="onFileSelected($event)"
       type="text"
       type="file"
       accept=".zip"
@@ -13,10 +12,14 @@
       fullWidth
       fieldSize="medium"
       placeholder="Medium"
+      type="file"
+      name="image"
+      (change)="onFileChange($event)"
     />
+    <nb-progress-bar [status]="progressBarStatus" [value]="uploadedPercentage">{{uploadedPercentage}}%</nb-progress-bar>
   </nb-card-body>
   <nb-card-footer>
-    <button nbButton outline status="primary" (click)="ref.close()">Cancel</button>
-    <button nbButton status="primary" (click)="onUpload()">Upload</button>
+    <button nbButton [disabled]="disableButtons" outline status="primary" (click)="ref.close()">Cancel</button>
+    <button nbButton [disabled]="disableButtons" status="primary" (click)="onUpload()">Upload</button>
   </nb-card-footer>
 </nb-card>

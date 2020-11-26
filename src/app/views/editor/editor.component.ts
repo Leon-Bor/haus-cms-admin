@@ -51,7 +51,7 @@ export class EditorComponent implements OnInit, AfterViewInit {
             this.editor.setSession(new ace.createEditSession(file?.value, 'ace/mode/css'));
             break;
           default:
-            this.editor.setSession(new ace.createEditSession(file?.value, 'ace/mode/plain_text'));
+            // this.editor.setSession(new ace.createEditSession(file?.value, 'ace/mode/plain_text'));
             break;
         }
         if (file.type === 'component') {
@@ -100,5 +100,18 @@ export class EditorComponent implements OnInit, AfterViewInit {
 
   onOpenUpload(): void {
     this.dialogService.open(UploadZipComponent, { context: 'this is some additional data passed to dialog' });
+  }
+
+  isDraft(): boolean {
+    const currentFile = this.codeEditorService.currentFile.value;
+    const draftName = currentFile?.type + '#' + currentFile?.id;
+    return !!this.codeEditorService.drafts[draftName];
+  }
+
+  saveDraft(): void {
+    this.codeEditorService.saveDraft();
+  }
+  deleteDraft(): void {
+    this.codeEditorService.deleteDraft();
   }
 }

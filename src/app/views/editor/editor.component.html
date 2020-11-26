@@ -41,6 +41,14 @@
       <div class="code">
         <div id="editor"></div>
         <!-- <ace-editor id="editor" #editor> </ace-editor> -->
+        <div class="save" *ngIf="isDraft()">
+          <button (click)="deleteDraft()" nbButton shape="round" size="small" status="success" status="danger">
+            <nb-icon icon="close-outline"></nb-icon>
+          </button>
+          <button (click)="saveDraft()" nbButton shape="round" size="large" status="success">
+            <nb-icon icon="save-outline"></nb-icon>
+          </button>
+        </div>
       </div>
       <div class="preview" [ngStyle]="previewStyles">
         <div class="preview-toolbar">

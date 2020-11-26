@@ -18,6 +18,7 @@ import {
   NbToastrModule,
   NbGlobalPositionStrategy,
   NbGlobalPhysicalPosition,
+  NbProgressBarModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { IndexComponent } from './views/index.component';
@@ -45,6 +46,7 @@ import { LoginComponent } from './views/login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { FileComponent } from './components/file/file.component';
 import { DeleteDialogComponent } from './components/dialogs/delete-dialog/delete-dialog.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,8 @@ import { DeleteDialogComponent } from './components/dialogs/delete-dialog/delete
     DeleteDialogComponent,
   ],
   imports: [
+    NbProgressBarModule,
+    FileUploadModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

@@ -1,61 +1,58 @@
 import { Component, OnInit } from '@angular/core';
-import { NbDialogRef } from '@nebular/theme';
+import { NbDialogRef, NbToastrService } from '@nebular/theme';
 import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
+import { FileUploader } from 'ng2-file-upload';
+
+const URL = `${environment.backendUrl}/cms/upload-template`;
+
 @Component({
   selector: 'app-upload-zip',
   templateUrl: './upload-zip.component.html',
   styleUrls: ['./upload-zip.component.scss'],
 })
 export class UploadZipComponent implements OnInit {
-  selectedFile: File = null;
+  fileData: File = null;
   uploadedPercentage = 0;
-  showMessage = false;
-  message = '';
+  uploadedFilePath: string = null;
+  disableButtons = false;
+  progressBarStatus = 'basic';
 
-  constructor(public ref: NbDialogRef<any>, private http: HttpClient) {}
+  constructor(public ref: NbDialogRef<any>, private http: HttpClient, private toastrService: NbToastrService) {}
 
   ngOnInit(): void {}
 
-  onFileSelected(event): void {
-    this.selectedFile = event.target.files[0] as File;
+  onFileChange(fileInput: any): void {
+    this.fileData = fileInput.target.files[0] as File;
   }
 
   onUpload(): void {
-    const fd = new FormData();
-    this.showMessage = false;
-    console.log(this.selectedFile.name);
-    fd.append('file', this.selectedFile, this.selectedFile.name);
+    this.disableButtons = true;
+    const formData = new FormData();
+    formData.append('file', this.fileData);
+
+    this.uploadedPercentage = 0;
+
     this.http
-      .post(`http://localhost:3000/upload-file`, fd, {
+      .post(URL, formData, {
         reportProgress: true,
         observe: 'events',
       })
       .subscribe(
-        (event: HttpEvent<any>) => {
-          switch (event.type) {
-            case HttpEventType.Sent:
-              // this.slimLoadingBarService.start();
-              break;
-            case HttpEventType.Response:
-              // this.slimLoadingBarService.complete();
-              this.message = 'Uploaded Successfully';
-              this.showMessage = true;
-              break;
-            case 1: {
-              console.log(event);
-              // if (Math.round(this.uploadedPercentage) !== Math.round((event.loaded / event.total) * 100)) {
-              //   this.uploadedPercentage = (event.loaded / event.total) * 100;
-              //   // this.slimLoadingBarService.progress = Math.round(this.uploadedPercentage);
-              // }
-              break;
-            }
+        (events) => {
+          if (events.type === HttpEventType.UploadProgress) {
+            this.uploadedPercentage = Math.round((events.loaded / events.total) * 100);
+          } else if (events.type === HttpEventType.Response) {
+            this.uploadedPercentage = 0;
+            this.disableButtons = false;
+            // this.ref.close();
+            this.toastrService?.show(`Your template has been uploaded successfully!`, 'File Uploaded', { status: 'success' });
           }
         },
         (error) => {
           console.log(error);
-          this.message = 'Something went wrong';
-          this.showMessage = true;
-          // this.slimLoadingBarService.reset();
+          this.progressBarStatus = 'danger';
+          this.disableButtons = false;
         }
       );
   }
