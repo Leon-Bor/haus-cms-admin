@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import './theme.scss';
+
 .nb-theme-dark {
   nb-layout-header {
     nav {
@@ -25,5 +28,20 @@
     align-items: center;
     justify-content: flex-end;
     gap: 15px;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  label {
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  .error {
+    font-size: 11px;
+    color: nb-theme(color-danger-default);
   }
 }

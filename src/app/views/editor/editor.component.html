@@ -2,7 +2,27 @@
   <nb-layout-header>
     <app-logo name="editor"></app-logo>
     <div class="nav-actions">
-      <nb-icon (click)="onOpenUpload()" icon="cloud-upload-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+      <nb-icon
+        nbTooltip="Clone website"
+        nbTooltipPlacement="bottom"
+        pack="custom"
+        icon="clone"
+        [options]="{ animation: { type: 'pulse' } }"
+      ></nb-icon>
+      <nb-icon
+        nbTooltip="Parse templates"
+        nbTooltipPlacement="bottom"
+        pack="custom"
+        icon="website"
+        [options]="{ animation: { type: 'pulse' } }"
+      ></nb-icon>
+      <nb-icon
+        nbTooltip="Upload .zip template"
+        nbTooltipPlacement="bottom"
+        (click)="onOpenUpload()"
+        icon="cloud-upload-outline"
+        [options]="{ animation: { type: 'pulse' } }"
+      ></nb-icon>
     </div>
   </nb-layout-header>
   <nb-layout-column>
@@ -12,7 +32,7 @@
           <div class="menu-toolbar">
             <p>Templates</p>
             <div class="menu-toolbar-actions">
-              <nb-icon icon="plus-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+              <nb-icon (click)="onAddFile('template')" icon="plus-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
             </div>
           </div>
           <app-menu-templates></app-menu-templates>
@@ -22,7 +42,7 @@
             <p>Components</p>
             <div class="menu-toolbar-actions">
               <nb-icon icon="info-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
-              <nb-icon icon="plus-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+              <nb-icon (click)="onAddFile('component')" icon="plus-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
             </div>
           </div>
           <app-menu-components></app-menu-components>
@@ -32,7 +52,7 @@
             <p>Files</p>
             <div class="menu-toolbar-actions">
               <nb-icon icon="upload-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
-              <nb-icon icon="plus-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+              <nb-icon (click)="onAddFile('file')" icon="plus-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
             </div>
           </div>
           <app-menu-files></app-menu-files>

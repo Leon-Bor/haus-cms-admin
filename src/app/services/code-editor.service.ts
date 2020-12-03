@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NbToastrService } from '@nebular/theme';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from '../../environments/environment';
 
@@ -10,7 +11,7 @@ export class CodeEditorService {
   drafts = {};
   readonly currentFile = new BehaviorSubject(null);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toastrService: NbToastrService) {}
 
   setCurrentFile(file): void {
     const draftName = file?.type + '#' + file?.id;
@@ -30,7 +31,18 @@ export class CodeEditorService {
 
   saveDraft(): void {
     const file = this.currentFile.value;
-    this.http.patch(`${environment.backendUrl}/cms/${file?.type}s/`, file);
+    this.http.patch(`${environment.backendUrl}/cms/${file?.type}s/${file?.id}`, file).subscribe(
+      () => {
+        // success
+
+        this.toastrService?.show(`Your template has been saved successfully`, 'Template saved', { status: 'success' });
+      },
+      () => {
+        // error
+
+        this.toastrService?.show(`Saving file failed`, 'File Uploaded', { status: 'danger' });
+      }
+    );
   }
   deleteDraft(): void {}
 }

@@ -1,0 +1,18 @@
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+  <nb-card>
+    <nb-card-header>Add {{type}}</nb-card-header>
+    <nb-card-body>
+      <div class="form-group">
+        <label for="id">Filename</label>
+        <input formControlName="id" type="text" nbInput placeholder="Type name of file..." />
+        <div *ngIf="id.invalid && (id.dirty || id.touched)">
+          <span class="error" *ngIf="id.errors.required">Name is required.</span>
+        </div>
+      </div>
+    </nb-card-body>
+    <nb-card-footer>
+      <button nbButton outline status="primary" (click)="ref.close()">Cancel</button>
+      <button nbButton status="primary" type="submit">Add</button>
+    </nb-card-footer>
+  </nb-card>
+</form>

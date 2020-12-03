@@ -4,12 +4,19 @@ nb-layout-column {
 }
 
 .nav-actions {
+  display: flex;
   nb-icon {
     width: 60px;
     height: 60px;
     padding: 15px;
     transition: all 0.33s linear;
+    fill: #c5cee0;
+    svg {
+      width: 60px;
+      height: 60px;
+    }
     &:hover {
+      fill: white;
       background-color: nb-theme(color-basic-900);
     }
   }

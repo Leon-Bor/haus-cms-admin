@@ -14,7 +14,7 @@ export class MenuComponentsComponent implements OnInit {
   constructor(private componentsService: ComponentsService, private codeEditorService: CodeEditorService) {}
 
   ngOnInit(): void {
-    this.componentsService.getComponents();
+    this.componentsService.list();
     this.componentsService.components.subscribe((items) => {
       this.items = items;
     });

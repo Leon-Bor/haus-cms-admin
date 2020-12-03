@@ -11,7 +11,7 @@ export class TemplatesService {
 
   constructor(private http: HttpClient) {}
 
-  getTemplates(): void {
+  list(): void {
     console.log('get tempalte');
     this.http.get(`${environment.backendUrl}/cms/templates`).subscribe((data: any) => {
       console.log('data', data);

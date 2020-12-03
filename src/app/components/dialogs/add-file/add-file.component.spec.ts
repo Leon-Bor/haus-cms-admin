@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AceCodeEditorComponent } from './ace-code-editor.component';
+import { AddFileComponent } from './add-file.component';
 
-describe('AceCodeEditorComponent', () => {
-  let component: AceCodeEditorComponent;
-  let fixture: ComponentFixture<AceCodeEditorComponent>;
+describe('AddFileComponent', () => {
+  let component: AddFileComponent;
+  let fixture: ComponentFixture<AddFileComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AceCodeEditorComponent ]
+      declarations: [ AddFileComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AceCodeEditorComponent);
+    fixture = TestBed.createComponent(AddFileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

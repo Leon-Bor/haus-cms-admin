@@ -4,6 +4,7 @@ import { Ace } from 'ace-builds';
 import { ResizeEvent } from 'angular-resizable-element';
 import { AceConfigInterface } from 'ngx-ace-wrapper';
 import { environment } from '../../../environments/environment';
+import { AddFileComponent } from '../../components/dialogs/add-file/add-file.component';
 import { UploadZipComponent } from '../../components/dialogs/upload-zip/upload-zip.component';
 import { CodeEditorService } from '../../services/code-editor.service';
 // import 'brace/theme/nord_dark';
@@ -113,5 +114,13 @@ export class EditorComponent implements OnInit, AfterViewInit {
   }
   deleteDraft(): void {
     this.codeEditorService.deleteDraft();
+  }
+
+  onAddFile(type): void {
+    this.dialogService.open(AddFileComponent, {
+      context: {
+        type,
+      },
+    });
   }
 }

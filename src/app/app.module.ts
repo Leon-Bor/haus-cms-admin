@@ -19,6 +19,7 @@ import {
   NbGlobalPositionStrategy,
   NbGlobalPhysicalPosition,
   NbProgressBarModule,
+  NbTooltipModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { IndexComponent } from './views/index.component';
@@ -27,7 +28,6 @@ import { AnalyticsComponent } from './views/analytics/analytics.component';
 import { UpdateComponent } from './views/update/update.component';
 import { SimpleHeaderComponent } from './components/simple-header/simple-header.component';
 import { EditorHeaderComponent } from './components/editor-header/editor-header.component';
-import { AceCodeEditorComponent } from './components/ace-code-editor/ace-code-editor.component';
 import { WebsitePreviewComponent } from './components/website-preview/website-preview.component';
 import { ResizableModule } from 'angular-resizable-element';
 import { SafePipe } from './pipes/safe-pipe';
@@ -47,6 +47,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { FileComponent } from './components/file/file.component';
 import { DeleteDialogComponent } from './components/dialogs/delete-dialog/delete-dialog.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { AddFileComponent } from './components/dialogs/add-file/add-file.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,6 @@ import { FileUploadModule } from 'ng2-file-upload';
     UpdateComponent,
     SimpleHeaderComponent,
     EditorHeaderComponent,
-    AceCodeEditorComponent,
     WebsitePreviewComponent,
     SafePipe,
     LogoComponent,
@@ -68,6 +69,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     LoginComponent,
     FileComponent,
     DeleteDialogComponent,
+    AddFileComponent,
   ],
   imports: [
     NbProgressBarModule,
@@ -90,6 +92,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     AceEditorModule,
     NbMenuModule.forRoot(),
     NbToastrModule.forRoot({ duration: 10000, position: NbGlobalPhysicalPosition.BOTTOM_RIGHT, destroyByClick: true }),
+    NbTooltipModule,
+    ReactiveFormsModule,
   ],
   providers: [
     FilesService,

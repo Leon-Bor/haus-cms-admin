@@ -14,7 +14,7 @@ export class MenuFilesComponent implements OnInit {
   constructor(private filesService: FilesService, private codeEditorService: CodeEditorService) {}
 
   ngOnInit(): void {
-    this.filesService.getFiles();
+    this.filesService.list();
     this.filesService.files.subscribe((items) => {
       this.items = items;
     });

@@ -19,7 +19,7 @@ export class MenuTemplatesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.templateService.getTemplates();
+    this.templateService.list();
     this.templateService.templates.subscribe((items) => {
       this.items = items;
       if (!this.codeEditorService.currentFile.value) {

@@ -11,7 +11,7 @@ export class FilesService {
 
   constructor(private http: HttpClient) {}
 
-  getFiles(): void {
+  list(): void {
     this.http.get(`${environment.backendUrl}/cms/files`).subscribe((data: any) => {
       this.files.next(data);
     });

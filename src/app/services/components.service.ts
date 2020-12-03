@@ -11,7 +11,7 @@ export class ComponentsService {
 
   constructor(private http: HttpClient) {}
 
-  getComponents(): void {
+  list(): void {
     this.http.get(`${environment.backendUrl}/cms/components`).subscribe((data: any) => {
       this.components.next(data);
     });
