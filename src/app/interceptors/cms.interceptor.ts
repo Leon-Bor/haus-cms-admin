@@ -5,12 +5,12 @@ import { Observable } from 'rxjs';
 export class CmsInterceptor implements HttpInterceptor {
   constructor() {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log(request.url, localStorage.getItem('haus-editKey'));
+    console.log(request.url, localStorage.getItem('haus-adminToken'));
     if (request.url.includes('/cms/')) {
       console.log('set header');
       request = request.clone({
         setHeaders: {
-          Authorization: `${localStorage.getItem('haus-editKey')}`,
+          Authorization: `${localStorage.getItem('haus-adminToken')}`,
         },
       });
     }

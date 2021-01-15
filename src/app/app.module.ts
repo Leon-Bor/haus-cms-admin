@@ -20,6 +20,7 @@ import {
   NbGlobalPhysicalPosition,
   NbProgressBarModule,
   NbTooltipModule,
+  NbToggleModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { IndexComponent } from './views/index.component';
@@ -49,6 +50,13 @@ import { DeleteDialogComponent } from './components/dialogs/delete-dialog/delete
 import { FileUploadModule } from 'ng2-file-upload';
 import { AddFileComponent } from './components/dialogs/add-file/add-file.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { environment } from '../environments/environment';
+import { SocketService } from './services/socket.service';
+import { SettingsService } from './services/settings.service';
+import { SettingsComponent } from './views/settings/settings.component';
+
+const config: SocketIoConfig = { url: environment.backendUrl, options: {} };
 
 @NgModule({
   declarations: [
@@ -70,8 +78,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     FileComponent,
     DeleteDialogComponent,
     AddFileComponent,
+    SettingsComponent,
   ],
   imports: [
+    SocketIoModule.forRoot(config),
     NbProgressBarModule,
     FileUploadModule,
     BrowserModule,
@@ -94,12 +104,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     NbToastrModule.forRoot({ duration: 10000, position: NbGlobalPhysicalPosition.BOTTOM_RIGHT, destroyByClick: true }),
     NbTooltipModule,
     ReactiveFormsModule,
+    NbToggleModule,
   ],
   providers: [
     FilesService,
     ComponentsService,
     AuthGuardService,
     TemplatesService,
+    SocketService,
+    SettingsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: CmsInterceptor,

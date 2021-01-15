@@ -5,6 +5,7 @@ import { AnalyticsComponent } from './views/analytics/analytics.component';
 import { EditorComponent } from './views/editor/editor.component';
 import { IndexComponent } from './views/index.component';
 import { LoginComponent } from './views/login/login.component';
+import { SettingsComponent } from './views/settings/settings.component';
 import { UpdateComponent } from './views/update/update.component';
 
 const routes: Routes = [
@@ -32,6 +33,12 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
+  {
+    path: 'settings',
+    component: SettingsComponent,
+    canActivate: [AuthGuardService],
+  },
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({

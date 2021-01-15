@@ -10,19 +10,24 @@
       </h1>
       <div class="row">
         <div class="card" (click)="redirectTo('update')">
-          <img src="../../assets/system-update.svg" />
+          <img src="../../assets/synchronization.svg" />
           <p class="title">Update</p>
-          <p class="description">Get the latest Haus CMS version.</p>
+          <p class="description">Get the latest CMS version.</p>
         </div>
         <div class="card" (click)="redirectTo('editor')">
-          <img src="../../assets/coding.svg" />
+          <img src="../../assets/code.svg" />
           <p class="title">Editor</p>
           <p class="description">Edit live your website code.</p>
         </div>
         <div class="card" (click)="redirectTo('analytics')">
-          <img src="../../assets/analytics.svg" />
+          <img src="../../assets/web-traffic.svg" />
           <p class="title">Analytics</p>
           <p class="description">See how is your page performing.</p>
+        </div>
+        <div class="card" (click)="redirectTo('settings')">
+          <img src="../../assets/maintenance.svg" />
+          <p class="title">Settings</p>
+          <p class="description">Change your CMS settings.</p>
         </div>
       </div>
     </div>

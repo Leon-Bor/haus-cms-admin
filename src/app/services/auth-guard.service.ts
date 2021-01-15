@@ -13,16 +13,14 @@ export class AuthGuardService implements CanActivate {
       return true;
     } else {
       return new Observable<boolean>((observer) => {
-        this.authService
-          .login()
-          .then((isAuth) => {
-            observer.next(isAuth);
-            observer.complete();
-          })
-          .catch(() => {
-            observer.next(false);
-            observer.complete();
-          });
+        if (localStorage.getItem('haus-adminToken')) {
+          observer.next(true);
+          observer.complete();
+        } else {
+          observer.next(false);
+          this.router.navigate(['login']);
+          observer.complete();
+        }
       });
     }
   }

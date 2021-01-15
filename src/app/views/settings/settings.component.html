@@ -1,0 +1,51 @@
+<nb-layout>
+  <nb-layout-header fixed>
+    <app-logo name="settings"></app-logo>
+  </nb-layout-header>
+
+  <nb-layout-column>
+    <div class="settings">
+      <div class="container">
+        <h1>Settings</h1>
+
+        <h3>General</h3>
+
+        <div class="set">
+          <div class="info">
+            <label>Enable analytics</label>
+            <p>
+              Track page visitors and used devices on you page. If activated you can limit the tracking individualy.
+            </p>
+          </div>
+          <nb-toggle status="primary"></nb-toggle>
+        </div>
+
+        <h3>Which analytical data to you want to track?</h3>
+
+        <div class="set">
+          <div class="info">
+            <label>Page visitors</label>
+            <p>
+              Track how many people are visiting you site. This will include daily, monthly and yearly visitors.
+            </p>
+          </div>
+          <nb-toggle status="primary"></nb-toggle>
+        </div>
+        <div class="set">
+          <div class="info">
+            <label>Visitor devices</label>
+            <p>
+              Capture the devices of your visitors. You can see if your page visitors are more likely on your page with their phone, tablet
+              or laptop.
+            </p>
+          </div>
+          <nb-toggle status="primary"></nb-toggle>
+        </div>
+      </div>
+    </div>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    <!-- Insert footer here -->
+  </nb-layout-footer>
+</nb-layout>

@@ -3,8 +3,7 @@ import { NbDialogRef, NbToastrService } from '@nebular/theme';
 import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { FileUploader } from 'ng2-file-upload';
-
-const URL = `${environment.backendUrl}/cms/upload-template`;
+import { SettingsService } from '../../../services/settings.service';
 
 @Component({
   selector: 'app-upload-zip',
@@ -17,8 +16,14 @@ export class UploadZipComponent implements OnInit {
   uploadedFilePath: string = null;
   disableButtons = false;
   progressBarStatus = 'basic';
+  uploadUrl = `${environment.backendUrl}/cms/upload-template`;
 
-  constructor(public ref: NbDialogRef<any>, private http: HttpClient, private toastrService: NbToastrService) {}
+  constructor(
+    public ref: NbDialogRef<any>,
+    private http: HttpClient,
+    private toastrService: NbToastrService,
+    private settingsService: SettingsService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -34,7 +39,7 @@ export class UploadZipComponent implements OnInit {
     this.uploadedPercentage = 0;
 
     this.http
-      .post(URL, formData, {
+      .post(`${environment.backendUrl}/${this.settingsService.settings.value.adminPath}/upload-template`, formData, {
         reportProgress: true,
         observe: 'events',
       })

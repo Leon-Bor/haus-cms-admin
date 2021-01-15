@@ -5,13 +5,25 @@
   align-items: center;
   flex-direction: column;
   gap: 50px;
+  h1 {
+    text-align: center;
+    @media only screen and (max-width: 768px) {
+      font-size: 36px;
+    }
+  }
 }
 .row {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 50px;
   margin-bottom: 100px;
+
+  @media only screen and (max-width: 1200px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }
 .card {
   width: 300px;
@@ -21,10 +33,13 @@
   cursor: pointer;
   border: 2px solid transparent;
   transition: 0.33s all linear;
+  @media only screen and (max-width: 1440px) {
+    width: 220px;
+  }
   &:hover {
     border-color: nb-theme(color-basic-600);
     p {
-      transform: translateY(-10px);
+      // transform: translateY(-10px);
     }
     img {
       transform: scale(1.1);
@@ -36,6 +51,9 @@
     max-height: 100%;
     padding: 50px;
     transition: 0.33s all linear;
+    @media only screen and (max-width: 1440px) {
+      padding: 30px;
+    }
   }
   p {
     text-align: center;
@@ -45,11 +63,17 @@
       text-transform: uppercase;
       font-size: 30px;
       font-weight: 600;
+      @media only screen and (max-width: 1440px) {
+        font-size: 24px;
+      }
     }
     &.description {
       font-size: 16px;
       font-weight: 300;
       opacity: 0.5;
+      @media only screen and (max-width: 1440px) {
+        font-size: 14px;
+      }
     }
   }
 }

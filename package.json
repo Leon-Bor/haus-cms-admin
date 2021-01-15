@@ -28,6 +28,7 @@
     "ng2-ace-editor": "^0.3.9",
     "ng2-file-upload": "^1.4.0",
     "ngx-ace-wrapper": "^10.0.1",
+    "ngx-socket-io": "^3.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

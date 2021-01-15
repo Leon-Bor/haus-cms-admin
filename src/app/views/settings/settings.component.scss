@@ -1,0 +1,46 @@
+@import '../../../theme.scss';
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+
+  .container {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+  }
+  h1 {
+    text-align: center;
+  }
+  h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #8e9297;
+  }
+  .set {
+    display: flex;
+    justify-content: space-between;
+    align-self: start;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 20px;
+    gap: 30px;
+    label {
+      font-size: 16px;
+      font-weight: 500;
+    }
+    p {
+      color: #b9bbbe;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 300;
+      letter-spacing: 0.1px;
+    }
+    nb-toggle {
+      align-items: flex-start;
+    }
+  }
+}
