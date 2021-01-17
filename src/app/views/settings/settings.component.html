@@ -41,6 +41,56 @@
           </div>
           <nb-toggle status="primary"></nb-toggle>
         </div>
+
+        <h3>Internationalization i18n</h3>
+        <div class="set">
+          <div class="info">
+            <label>Enable internationalization</label>
+            <p>
+              You can provide your website in as many languages as you want.
+            </p>
+          </div>
+          <nb-toggle status="primary"></nb-toggle>
+        </div>
+        <div class="set">
+          <div class="info">
+            <label>Languages</label>
+            <p>
+              Select all languages you want to display your website in.
+            </p>
+          </div>
+          <nb-select multiple placeholder="Select languages">
+            <nb-option-group title="Favorites">
+              <nb-option value="en">en</nb-option>
+              <nb-option value="de">de</nb-option>
+              <nb-option value="it">it</nb-option>
+              <nb-option value="es">es</nb-option>
+              <nb-option value="ru">ru</nb-option>
+            </nb-option-group>
+
+            <nb-option-group title="All languages">
+              <nb-option *ngFor="let l of locales" [value]="l">{{l}}</nb-option>
+            </nb-option-group>
+          </nb-select>
+        </div>
+        <div class="set">
+          <div class="info">
+            <label>Default language</label>
+            <p>
+              We will try to detect the visitors browser language and show the correct language content. If the language does not exits,
+              which one should we show as default?
+            </p>
+          </div>
+          <nb-select placeholder="Select languages">
+            <nb-option-group title="Favorites">
+              <nb-option value="en">en</nb-option>
+              <nb-option value="de">de</nb-option>
+              <nb-option value="it">it</nb-option>
+              <nb-option value="es">es</nb-option>
+              <nb-option value="ru">ru</nb-option>
+            </nb-option-group>
+          </nb-select>
+        </div>
       </div>
     </div>
   </nb-layout-column>

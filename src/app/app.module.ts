@@ -21,6 +21,7 @@ import {
   NbProgressBarModule,
   NbTooltipModule,
   NbToggleModule,
+  NbSelectModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { IndexComponent } from './views/index.component';
@@ -105,6 +106,7 @@ const config: SocketIoConfig = { url: environment.backendUrl, options: {} };
     NbTooltipModule,
     ReactiveFormsModule,
     NbToggleModule,
+    NbSelectModule,
   ],
   providers: [
     FilesService,

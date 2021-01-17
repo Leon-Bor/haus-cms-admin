@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Settings } from '../../../../haus-cms-nest/src/models/classes/settings.model';
-import { SocketMessage } from '../../../../haus-cms-nest/src/models/classes/socket-message.model';
-import { SocketRoutes } from '../../../../haus-cms-nest/src/models/enums/socket-routes.enum';
+import { Settings } from '../../../../haus-cms/src/models/classes/settings.model';
+import { SocketMessage } from '../../../../haus-cms/src/models/classes/socket-message.model';
+import { SocketRoutes } from '../../../../haus-cms/src/models/enums/socket-routes.enum';
 import { SocketService } from './socket.service';
 
 @Injectable({

@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { SocketRoutes } from '../../../../haus-cms-nest/src/models/enums/socket-routes.enum';
+import { SocketRoutes } from '../../../../haus-cms/src/models/enums/socket-routes.enum';
 import { environment } from '../../environments/environment';
 import { SocketService } from './socket.service';
-import { SocketMessage } from '../../../../haus-cms-nest/src/models/classes/socket-message.model';
+import { SocketMessage } from '../../../../haus-cms/src/models/classes/socket-message.model';
 import { SettingsService } from './settings.service';
 
 @Injectable({

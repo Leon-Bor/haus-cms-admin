@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
-import { SocketRoutes } from '../../../../haus-cms-nest/src/models/enums/socket-routes.enum';
+import { SocketRoutes } from '../../../../haus-cms/src/models/enums/socket-routes.enum';
 import { environment } from '../../environments/environment';
 
 @Injectable({
