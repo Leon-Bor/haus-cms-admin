@@ -56,6 +56,7 @@ import { environment } from '../environments/environment';
 import { SocketService } from './services/socket.service';
 import { SettingsService } from './services/settings.service';
 import { SettingsComponent } from './views/settings/settings.component';
+import { AdminComponent } from './views/admin/admin.component';
 
 const config: SocketIoConfig = { url: environment.backendUrl, options: {} };
 
@@ -80,6 +81,7 @@ const config: SocketIoConfig = { url: environment.backendUrl, options: {} };
     DeleteDialogComponent,
     AddFileComponent,
     SettingsComponent,
+    AdminComponent,
   ],
   imports: [
     SocketIoModule.forRoot(config),

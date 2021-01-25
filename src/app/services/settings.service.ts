@@ -9,7 +9,7 @@ import { SocketService } from './socket.service';
   providedIn: 'root',
 })
 export class SettingsService {
-  readonly settings: BehaviorSubject<Settings> = new BehaviorSubject(new Settings());
+  readonly settings: BehaviorSubject<Settings> = new BehaviorSubject(new Settings((window as any)?.hausSettings || null));
 
   constructor(private socketService: SocketService) {
     this.settings.subscribe((s) => {

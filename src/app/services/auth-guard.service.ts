@@ -18,7 +18,7 @@ export class AuthGuardService implements CanActivate {
           observer.complete();
         } else {
           observer.next(false);
-          this.router.navigate(['login']);
+          this.router.navigate(['haus-admin', 'login']);
           observer.complete();
         }
       });

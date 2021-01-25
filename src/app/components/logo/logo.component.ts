@@ -14,6 +14,6 @@ export class LogoComponent implements OnInit {
   ngOnInit(): void {}
 
   onLogoClick(): void {
-    this.router.navigate(['']);
+    this.router.navigate(['haus-admin']);
   }
 }

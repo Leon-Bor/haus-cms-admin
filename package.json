@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --output-hashing=none",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -25,6 +25,7 @@
     "ace-builds": "^1.4.12",
     "angular-resizable-element": "^3.3.3",
     "eva-icons": "^1.1.2",
+    "jquery": "^3.5.1",
     "ng2-ace-editor": "^0.3.9",
     "ng2-file-upload": "^1.4.0",
     "ngx-ace-wrapper": "^10.0.1",

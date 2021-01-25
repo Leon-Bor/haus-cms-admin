@@ -29,10 +29,10 @@ export class AuthService {
       this.isAuthenticated = data;
       if (this.isAuthenticated) {
         if (window.location.href.includes('/login')) {
-          this.router.navigate(['']);
+          this.router.navigate(['haus-admin']);
         }
       } else {
-        this.router.navigate(['login']);
+        this.router.navigate(['haus-admin', 'login']);
       }
     });
   }

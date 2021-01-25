@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Settings } from '../../../../../haus-cms/src/models/classes/settings.model';
 
 @Component({
   selector: 'app-settings',
