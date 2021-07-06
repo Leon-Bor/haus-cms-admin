@@ -3,9 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NbDialogRef, NbToastrService } from '@nebular/theme';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../../../environments/environment';
-import { TemplatesService } from '../../../services/templates.service';
-import { FilesService } from '../../../services/files.service';
-import { ComponentsService } from '../../../services/components.service';
+import { WebsiteEditorService } from '../../../services/website-editor.service';
 
 @Component({
   selector: 'app-add-file',
@@ -24,9 +22,7 @@ export class AddFileComponent implements OnInit {
     public ref: NbDialogRef<any>,
     private http: HttpClient,
     private toastrService: NbToastrService,
-    private templatesService: TemplatesService,
-    private componentsService: ComponentsService,
-    private filesService: FilesService
+    private websiteEditorService: WebsiteEditorService
   ) {}
 
   ngOnInit(): void {}
@@ -43,18 +39,22 @@ export class AddFileComponent implements OnInit {
         .subscribe(
           (newFile) => {
             // success
-            this.toastrService?.show(`New ${this.type} has been created`, `Created ${this.type}`, { status: 'success' });
+            this.toastrService?.show(
+              `New ${this.type} has been created`,
+              `Created ${this.type}`,
+              { status: 'success' }
+            );
             this.close();
 
             switch (this.type) {
-              case 'template':
-                this.templatesService.list();
+              case 'page':
+                this.websiteEditorService.getPages();
                 break;
               case 'component':
-                this.componentsService.list();
+                this.websiteEditorService.getComponents();
                 break;
-              case 'file':
-                this.filesService.list();
+              case 'asset':
+                this.websiteEditorService.getAssets();
                 break;
             }
           },

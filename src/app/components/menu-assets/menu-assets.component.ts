@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuItem } from '@nebular/theme';
 import { CodeEditorService } from '../../services/code-editor.service';
-import { FilesService } from '../../services/files.service';
+import { WebsiteEditorService } from '../../services/website-editor.service';
 
 @Component({
-  selector: 'app-menu-files',
-  templateUrl: './menu-files.component.html',
-  styleUrls: ['./menu-files.component.scss'],
+  selector: 'app-menu-assets',
+  templateUrl: './menu-assets.component.html',
+  styleUrls: ['./menu-assets.component.scss'],
 })
 export class MenuFilesComponent implements OnInit {
-  items: { id: string; path: string }[] = [];
+  items = [];
 
-  constructor(private filesService: FilesService, private codeEditorService: CodeEditorService) {}
+  constructor(
+    private websiteEditorService: WebsiteEditorService,
+    private codeEditorService: CodeEditorService
+  ) {}
 
   ngOnInit(): void {
-    this.filesService.list();
-    this.filesService.files.subscribe((items) => {
+    this.websiteEditorService.assets.subscribe((items) => {
       this.items = items;
     });
   }

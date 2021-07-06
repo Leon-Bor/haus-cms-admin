@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuItem } from '@nebular/theme';
 import { CodeEditorService } from '../../services/code-editor.service';
-import { ComponentsService } from '../../services/components.service';
+import { WebsiteEditorService } from '../../services/website-editor.service';
 
 @Component({
   selector: 'app-menu-components',
@@ -9,13 +9,15 @@ import { ComponentsService } from '../../services/components.service';
   styleUrls: ['./menu-components.component.scss'],
 })
 export class MenuComponentsComponent implements OnInit {
-  items: { id: string }[] = [];
+  items = [];
 
-  constructor(private componentsService: ComponentsService, private codeEditorService: CodeEditorService) {}
+  constructor(
+    private websiteEditorService: WebsiteEditorService,
+    private codeEditorService: CodeEditorService
+  ) {}
 
   ngOnInit(): void {
-    this.componentsService.list();
-    this.componentsService.components.subscribe((items) => {
+    this.websiteEditorService.components.subscribe((items) => {
       this.items = items;
     });
   }

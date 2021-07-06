@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FilesService } from './files.service';
+import { WebsiteEditorService } from './website-editor.service';
 
-describe('FilesService', () => {
-  let service: FilesService;
+describe('WebsiteEditorService', () => {
+  let service: WebsiteEditorService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FilesService);
+    service = TestBed.inject(WebsiteEditorService);
   });
 
   it('should be created', () => {

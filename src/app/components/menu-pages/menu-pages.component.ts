@@ -1,33 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService, NbMenuItem } from '@nebular/theme';
 import { CodeEditorService } from '../../services/code-editor.service';
-import { TemplatesService } from '../../services/templates.service';
+import { WebsiteEditorService } from '../../services/website-editor.service';
 import { DeleteDialogComponent } from '../dialogs/delete-dialog/delete-dialog.component';
 
 @Component({
-  selector: 'app-menu-templates',
-  templateUrl: './menu-templates.component.html',
-  styleUrls: ['./menu-templates.component.scss'],
+  selector: 'app-menu-pages',
+  templateUrl: './menu-pages.component.html',
+  styleUrls: ['./menu-pages.component.scss'],
 })
-export class MenuTemplatesComponent implements OnInit {
-  items: { id: string }[] = [];
+export class MenuPagesComponent implements OnInit {
+  items = [];
 
   constructor(
-    private templateService: TemplatesService,
+    private websiteEditorService: WebsiteEditorService,
     private dialogService: NbDialogService,
     private codeEditorService: CodeEditorService
   ) {}
 
   ngOnInit(): void {
-    this.templateService.list();
-    this.templateService.templates.subscribe((items) => {
+    this.websiteEditorService.pages.subscribe((items) => {
       this.items = items;
-      if (!this.codeEditorService.currentFile.value) {
-        const indexFile = items.find((f) => f?.id?.includes('index.html'));
-        if (indexFile) {
-          this.codeEditorService.setCurrentFile(indexFile);
-        }
-      }
+      // if (!this.codeEditorService.currentFile.value) {
+      //   const indexFile = items.find((f) => f?.id?.includes('index.html'));
+      //   if (indexFile) {
+      //     this.codeEditorService.setCurrentFile(indexFile);
+      //   }
+      // }
     });
   }
 

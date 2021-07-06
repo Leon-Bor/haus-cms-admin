@@ -30,19 +30,30 @@
       <div class="sidebar">
         <div class="templates">
           <div class="menu-toolbar">
-            <p>Templates</p>
+            <p>Pages</p>
             <div class="menu-toolbar-actions">
-              <nb-icon (click)="onAddFile('template')" icon="plus-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+              <nb-icon
+                (click)="onAddFile('page')"
+                icon="plus-outline"
+                [options]="{ animation: { type: 'pulse' } }"
+              ></nb-icon>
             </div>
           </div>
-          <app-menu-templates></app-menu-templates>
+          <app-menu-pages></app-menu-pages>
         </div>
         <div class="components">
           <div class="menu-toolbar">
             <p>Components</p>
             <div class="menu-toolbar-actions">
-              <nb-icon icon="info-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
-              <nb-icon (click)="onAddFile('component')" icon="plus-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+              <nb-icon
+                icon="info-outline"
+                [options]="{ animation: { type: 'pulse' } }"
+              ></nb-icon>
+              <nb-icon
+                (click)="onAddFile('component')"
+                icon="plus-outline"
+                [options]="{ animation: { type: 'pulse' } }"
+              ></nb-icon>
             </div>
           </div>
           <app-menu-components></app-menu-components>
@@ -51,21 +62,41 @@
           <div class="menu-toolbar">
             <p>Files</p>
             <div class="menu-toolbar-actions">
-              <nb-icon icon="upload-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
-              <nb-icon (click)="onAddFile('file')" icon="plus-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+              <nb-icon
+                icon="upload-outline"
+                [options]="{ animation: { type: 'pulse' } }"
+              ></nb-icon>
+              <nb-icon
+                (click)="onAddFile('asset')"
+                icon="plus-outline"
+                [options]="{ animation: { type: 'pulse' } }"
+              ></nb-icon>
             </div>
           </div>
-          <app-menu-files></app-menu-files>
+          <app-menu-assets></app-menu-assets>
         </div>
       </div>
       <div class="code">
         <div id="editor"></div>
         <!-- <ace-editor id="editor" #editor> </ace-editor> -->
         <div class="save" *ngIf="isDraft()">
-          <button (click)="deleteDraft()" nbButton shape="round" size="small" status="success" status="danger">
+          <button
+            (click)="deleteDraft()"
+            nbButton
+            shape="round"
+            size="small"
+            status="success"
+            status="danger"
+          >
             <nb-icon icon="close-outline"></nb-icon>
           </button>
-          <button (click)="saveDraft()" nbButton shape="round" size="large" status="success">
+          <button
+            (click)="saveDraft()"
+            nbButton
+            shape="round"
+            size="large"
+            status="success"
+          >
             <nb-icon icon="save-outline"></nb-icon>
           </button>
         </div>
@@ -73,14 +104,30 @@
       <div class="preview" [ngStyle]="previewStyles">
         <div class="preview-toolbar">
           <div class="icons">
-            <nb-icon (click)="onResizeIframe('min')" icon="minimize-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
-            <nb-icon (click)="onResizeIframe('max')" icon="maximize-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
-            <nb-icon (click)="onResizeIframe('phone')" icon="smartphone-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
-            <nb-icon (click)="onResizeIframe('desktop')" icon="monitor-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon>
+            <nb-icon
+              (click)="onResizeIframe('min')"
+              icon="minimize-outline"
+              [options]="{ animation: { type: 'pulse' } }"
+            ></nb-icon>
+            <nb-icon
+              (click)="onResizeIframe('max')"
+              icon="maximize-outline"
+              [options]="{ animation: { type: 'pulse' } }"
+            ></nb-icon>
+            <nb-icon
+              (click)="onResizeIframe('phone')"
+              icon="smartphone-outline"
+              [options]="{ animation: { type: 'pulse' } }"
+            ></nb-icon>
+            <nb-icon
+              (click)="onResizeIframe('desktop')"
+              icon="monitor-outline"
+              [options]="{ animation: { type: 'pulse' } }"
+            ></nb-icon>
           </div>
-          <p class="paragraph">{{previewStyles.width}}</p>
+          <p class="paragraph">{{ previewStyles.width }}</p>
         </div>
-        <iframe id="preview" [src]="previewUrl | safe:'resourceUrl'"></iframe>
+        <iframe id="preview" [src]="previewUrl | safe: 'resourceUrl'"></iframe>
       </div>
     </div>
   </nb-layout-column>

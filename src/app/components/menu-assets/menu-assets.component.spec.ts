@@ -1,16 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MenuFilesComponent } from './menu-files.component';
+import { MenuFilesComponent } from './menu-assets.component';
 
-describe('MenuFilesComponent', () => {
+describe('MenuAssetsComponent', () => {
   let component: MenuFilesComponent;
   let fixture: ComponentFixture<MenuFilesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MenuFilesComponent ]
-    })
-    .compileComponents();
+      declarations: [MenuFilesComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

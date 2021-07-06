@@ -7,6 +7,7 @@ import { environment } from '../../../environments/environment';
 import { AddFileComponent } from '../../components/dialogs/add-file/add-file.component';
 import { UploadZipComponent } from '../../components/dialogs/upload-zip/upload-zip.component';
 import { CodeEditorService } from '../../services/code-editor.service';
+import { WebsiteEditorService } from '../../services/website-editor.service';
 // import 'brace/theme/nord_dark';
 // import 'brace/mode/javascript';
 declare var ace: any;
@@ -19,11 +20,19 @@ declare var ace: any;
 export class EditorComponent implements OnInit, AfterViewInit {
   previewUrl = environment.backendUrl;
   previewStyles = { width: '420px' };
-  breakpoints = [320, 375, 420, 480, 568, 667, 768, 992, 1280, 1366, 1440, 1680, 1920];
+  breakpoints = [
+    320, 375, 420, 480, 568, 667, 768, 992, 1280, 1366, 1440, 1680, 1920,
+  ];
   @ViewChild('editor') editor;
-  constructor(private dialogService: NbDialogService, private codeEditorService: CodeEditorService) {}
+  constructor(
+    private dialogService: NbDialogService,
+    private codeEditorService: CodeEditorService,
+    private websiteEditorService: WebsiteEditorService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.websiteEditorService.getAll();
+  }
 
   ngAfterViewInit(): void {
     this.editor = ace.edit('editor');
@@ -43,13 +52,19 @@ export class EditorComponent implements OnInit, AfterViewInit {
       if (file) {
         switch (type) {
           case 'js':
-            this.editor.setSession(new ace.createEditSession(file?.value, 'ace/mode/javascript'));
+            this.editor.setSession(
+              new ace.createEditSession(file?.value, 'ace/mode/javascript')
+            );
             break;
           case 'html':
-            this.editor.setSession(new ace.createEditSession(file?.value, 'ace/mode/html'));
+            this.editor.setSession(
+              new ace.createEditSession(file?.value, 'ace/mode/html')
+            );
             break;
           case 'css':
-            this.editor.setSession(new ace.createEditSession(file?.value, 'ace/mode/css'));
+            this.editor.setSession(
+              new ace.createEditSession(file?.value, 'ace/mode/css')
+            );
             break;
           default:
             // this.editor.setSession(new ace.createEditSession(file?.value, 'ace/mode/plain_text'));
@@ -59,7 +74,10 @@ export class EditorComponent implements OnInit, AfterViewInit {
           this.editor.getSession().setUseWorker(false);
         }
         this.editor.getSession().on('change', (e) => {
-          this.codeEditorService.addCurrentFileToDraft(this.editor.getValue(), this.editor.getSession().getUndoManager());
+          this.codeEditorService.addCurrentFileToDraft(
+            this.editor.getValue(),
+            this.editor.getSession().getUndoManager()
+          );
         });
       }
     });
@@ -80,11 +98,19 @@ export class EditorComponent implements OnInit, AfterViewInit {
     switch (action) {
       case 'min':
         newWidth = this.breakpoints.findIndex((w) => w === width);
-        this.previewStyles.width = `${this.breakpoints?.[newWidth - 1] ? this.breakpoints?.[newWidth - 1] : 320}px`;
+        this.previewStyles.width = `${
+          this.breakpoints?.[newWidth - 1]
+            ? this.breakpoints?.[newWidth - 1]
+            : 320
+        }px`;
         break;
       case 'max':
         newWidth = this.breakpoints.findIndex((w) => w === width);
-        this.previewStyles.width = `${this.breakpoints?.[newWidth + 1] ? this.breakpoints?.[newWidth + 1] : 320}px`;
+        this.previewStyles.width = `${
+          this.breakpoints?.[newWidth + 1]
+            ? this.breakpoints?.[newWidth + 1]
+            : 320
+        }px`;
         break;
       case 'phone':
         this.previewStyles.width = `${420}px`;
@@ -100,7 +126,9 @@ export class EditorComponent implements OnInit, AfterViewInit {
   }
 
   onOpenUpload(): void {
-    this.dialogService.open(UploadZipComponent, { context: 'this is some additional data passed to dialog' });
+    this.dialogService.open(UploadZipComponent, {
+      context: 'this is some additional data passed to dialog',
+    });
   }
 
   isDraft(): boolean {

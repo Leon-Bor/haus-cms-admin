@@ -35,13 +35,9 @@ import { ResizableModule } from 'angular-resizable-element';
 import { SafePipe } from './pipes/safe-pipe';
 import { LogoComponent } from './components/logo/logo.component';
 import { UploadZipComponent } from './components/dialogs/upload-zip/upload-zip.component';
-import { MenuTemplatesComponent } from './components/menu-templates/menu-templates.component';
 import { MenuComponentsComponent } from './components/menu-components/menu-components.component';
-import { MenuFilesComponent } from './components/menu-files/menu-files.component';
+import { MenuFilesComponent } from './components/menu-assets/menu-assets.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FilesService } from './services/files.service';
-import { ComponentsService } from './services/components.service';
-import { TemplatesService } from './services/templates.service';
 import { CmsInterceptor } from './interceptors/cms.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { LoginComponent } from './views/login/login.component';
@@ -57,6 +53,8 @@ import { SocketService } from './services/socket.service';
 import { SettingsService } from './services/settings.service';
 import { SettingsComponent } from './views/settings/settings.component';
 import { AdminComponent } from './views/admin/admin.component';
+import { WebsiteEditorService } from './services/website-editor.service';
+import { MenuPagesComponent } from './components/menu-pages/menu-pages.component';
 
 const config: SocketIoConfig = { url: environment.backendUrl, options: {} };
 
@@ -73,8 +71,8 @@ const config: SocketIoConfig = { url: environment.backendUrl, options: {} };
     SafePipe,
     LogoComponent,
     UploadZipComponent,
-    MenuTemplatesComponent,
     MenuComponentsComponent,
+    MenuPagesComponent,
     MenuFilesComponent,
     LoginComponent,
     FileComponent,
@@ -84,17 +82,21 @@ const config: SocketIoConfig = { url: environment.backendUrl, options: {} };
     AdminComponent,
   ],
   imports: [
+    ReactiveFormsModule,
     SocketIoModule.forRoot(config),
-    NbProgressBarModule,
     FileUploadModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+
+    ResizableModule,
+    AceEditorModule,
+    // Nebular
+    NbProgressBarModule,
     NbThemeModule.forRoot({ name: 'dark' }),
     NbLayoutModule,
     NbEvaIconsModule,
-    ResizableModule,
     NbSpinnerModule,
     NbEvaIconsModule,
     NbIconModule,
@@ -102,21 +104,21 @@ const config: SocketIoConfig = { url: environment.backendUrl, options: {} };
     NbCardModule,
     NbButtonModule,
     NbInputModule,
-    AceEditorModule,
     NbMenuModule.forRoot(),
-    NbToastrModule.forRoot({ duration: 10000, position: NbGlobalPhysicalPosition.BOTTOM_RIGHT, destroyByClick: true }),
+    NbToastrModule.forRoot({
+      duration: 10000,
+      position: NbGlobalPhysicalPosition.BOTTOM_RIGHT,
+      destroyByClick: true,
+    }),
     NbTooltipModule,
-    ReactiveFormsModule,
     NbToggleModule,
     NbSelectModule,
   ],
   providers: [
-    FilesService,
-    ComponentsService,
     AuthGuardService,
-    TemplatesService,
     SocketService,
     SettingsService,
+    WebsiteEditorService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: CmsInterceptor,
